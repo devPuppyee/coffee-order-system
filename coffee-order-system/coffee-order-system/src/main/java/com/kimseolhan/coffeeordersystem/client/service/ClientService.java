@@ -21,7 +21,7 @@ public class ClientService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Client client = clientRepository.findByName(username);
+        Client client = clientRepository.findByWebId(username);
         if (Objects.isNull(client)) {
             throw new UsernameNotFoundException(username);
         }
@@ -33,7 +33,7 @@ public class ClientService implements UserDetailsService {
     }
 
     public Client createClient(ClientModel clientModel) {
-        Client client = Client.of(clientModel.getName(), clientModel.getRole(), clientModel.getPassword());
+        Client client = Client.of(clientModel.getName(), clientModel.getWebId(), clientModel.getRole(), clientModel.getPassword());
         client.encodePassword(passwordEncoder);
         return clientRepository.save(client);
     }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 100px;
+            margin-top: 15px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="joinForm" name="joinForm" th:action="@{/client}"  th:object="${client}" method="post">
+        <span>Name</span><input type="text" name="name" id="name" th:field="*{name}"/> <br />
+        <span>ID</span><input type="text" name="webId" id="webId" th:field="*{webId}"/> <br />
+        <span>Password</span><input type="text" name="password" id="password" th:field="*{password}"/> <br />
+        <span>Role</span><input type="text" name="role" id="role" th:field="*{role}"/>
+        <button type="submit" id="bntSubmit" th:text="가입하기"/>
+    </form>
+</body>
+<th:block layout:fragment="script">
+    <script type="text/javascript">
+        $("#bntSubmit").click(function(){
+            $.ajax({
+                url: "/client",
+                data: {formId : 'joinForm'},
+                type:"POST",
+            }).done(function () {
+                alert('가입되었습니다.');
+            });
+        });
+    </script>
+</th:block>
+</html>

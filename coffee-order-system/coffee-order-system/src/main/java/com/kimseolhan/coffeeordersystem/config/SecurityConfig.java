@@ -12,8 +12,10 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/", "/join", "/client/**").permitAll()
+        http.
+                authorizeHttpRequests((requests) -> requests
+                .requestMatchers("/", "/join", "/client","/login", "/client/**").permitAll()
+                .requestMatchers("/main").hasRole("USER")
                 // admin 페이지는 ADMIN 권한만 접근 가능
                 .requestMatchers("/admin").hasRole("ADMIN")
         )

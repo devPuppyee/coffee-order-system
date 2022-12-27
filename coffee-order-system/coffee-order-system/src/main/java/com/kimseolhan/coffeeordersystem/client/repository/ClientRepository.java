@@ -4,5 +4,5 @@ import com.kimseolhan.coffeeordersystem.client.domain.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClientRepository extends JpaRepository<Client, Integer> {
-    Client findByName(String name);
+    Client findByWebId(String webId);
 }
