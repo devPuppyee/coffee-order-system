@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <form id="joinForm" name="joinForm" th:action="@{/client}"  th:object="${client}" method="post">
+    <form id="joinForm" name="joinForm" th:action="@{/point}"  th:object="${point}" method="post">
         <span>Name</span><input type="text" name="name" id="name" th:field="*{name}"/> <br />
         <span>ID</span><input type="text" name="webId" id="webId" th:field="*{webId}"/> <br />
         <span>Password</span><input type="text" name="password" id="password" th:field="*{password}"/> <br />
@@ -26,7 +26,7 @@
     <script type="text/javascript">
         $("#bntSubmit").click(function(){
             $.ajax({
-                url: "/client",
+                url: "/point",
                 data: {formId : 'joinForm'},
                 type:"POST",
             }).done(function () {

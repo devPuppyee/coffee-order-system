@@ -1,9 +1,6 @@
 package com.kimseolhan.coffeeordersystem.client.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="client_id")
     private Integer id;
     private String webId;
     private String name;

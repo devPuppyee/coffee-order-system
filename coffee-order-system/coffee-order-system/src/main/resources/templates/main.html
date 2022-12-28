@@ -3,36 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        span {
-            display: inline-block;
-            width: 100px;
-            margin-top: 15px;
-            margin-left: 10px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
-    <form id="joinForm" name="joinForm" th:action="@{/client}"  th:object="${client}" method="post">
-        <span>Name</span><input type="text" name="name" id="name" th:field="*{name}"/> <br />
-        <span>ID</span><input type="text" name="id" id="id" th:field="*{id}"/> <br />
-        <span>Password</span><input type="text" name="password" id="password" th:field="*{password}"/> <br />
-        <span>Role</span><input type="text" name="role" id="role" th:field="*{role}"/>
-        <button type="submit" id="bntSubmit" th:text="가입하기"/>
-    </form>
+<h1>커피 주문 시스템</h1>
+<table>
+    <tr><td th:text="1. 포인트 충전"></td></tr>
+    <tr><td th:text="2. 주문하기"></td></tr>
+    <tr><td th:text="3. 랭킹보기"></td></tr>
+</table>
 </body>
-<th:block layout:fragment="script">
-    <script type="text/javascript">
-        $("#bntSubmit").click(function(){
-            $.ajax({
-                url: "/client",
-                data: {formId : 'joinForm'},
-                type:"POST",
-            }).done(function () {
-                alert('가입되었습니다.');
-            });
-        });
-    </script>
-</th:block>
 </html>
